@@ -84,8 +84,8 @@
         let gameActive = true;
         const statusDisplay = document.getElementById("status");
 
-        // Combinaciones ganadoras (Filas, Columnas y Diagonales)
-        const winningConditions = [, [3, 4, 5], [6, 7, 8], // Horizontales, [1, 4, 7], [2, 5, 8], // Verticales, [2, 4, 6]             // Diagonales
+        // Matriz explícita con las 8 formas de ganar en el tablero
+        const wins = [, [3, 4, 5], [6, 7, 8], // Horizontales, [1, 4, 7], [2, 5, 8], // Verticales, [2, 4, 6]             // Diagonales
         ];
 
         function makeMove(cell, index) {
@@ -100,9 +100,13 @@
         function checkResult() {
             let roundWon = false;
 
-            for (let i = 0; i < winningConditions.length; i++) {
-                const [a, b, c] = winningConditions[i];
-                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+            for (let i = 0; i < wins.length; i++) {
+                const condition = wins[i];
+                const a = board[condition[0]];
+                const b = board[condition[1]];
+                const c = board[condition[2]];
+                
+                if (a !== "" && a === b && a === c) {
                     roundWon = true;
                     break;
                 }
@@ -120,7 +124,8 @@
                 return;
             }
 
-            currentPlayer = currentPlayer === "X" ? "O" : "X";
+            // Cambiar de jugador de forma estricta
+            currentPlayer = (currentPlayer === "X") ? "O" : "X";
             statusDisplay.innerText = `Turno de: ${currentPlayer}`;
         }
 

@@ -1,3 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Gato Clásico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        #status {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #555;
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 5px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .cell {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border: 2px solid #333;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+        }
+        .cell:hover {
+            background-color: #e0e0e0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
         button:hover {
             background-color: #0056b3;
         }
@@ -5,7 +61,7 @@
 </head>
 <body>
 
-    <h1>Gato</h1>
+    <h1>Juego del Gato</h1>
     <div id="status">Turno de: X</div>
 
     <div class="board">
@@ -73,3 +129,8 @@
             gameActive = true;
             statusDisplay.innerText = `Turno de: ${currentPlayer}`;
             document.querySelectorAll('.cell').forEach(cell => cell.innerText = "");
+        }
+    </script>
+
+</body>
+</html>
